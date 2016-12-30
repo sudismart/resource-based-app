@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="container">
+        <div class="list-container">
+            <h2>Music Tracks</h2> <a id="genersLink" ui-sref="geners" ref=""> Go to geners</a>
+            <div class="overlay-wrapper">
+                <div class="search-container">
+                    <span ng-if="lCtrl.searchName"  class="overlay-x" ng-click="lCtrl.searchName=''">X</span>
+                    <!--<span class="overlay-y"><i class="fa fa-search"></i></span>-->
+                    <input type="text" ng-model="lCtrl.searchName" placeholder="&nbsp;&nbsp; Search Title" uib-typeahead="track for track in lCtrl.getTrack($viewValue)"
+                           typeahead-loading="loadingTracks" typeahead-no-results="noResults" class="form-control">
+                    <button ng-if="lCtrl.searchName" type="button" class="btn btn-info btn-xs edit-track-btn"
+                            data-toggle="modal" data-target="#editTrackModal" >Edit</button>
+                </div>
+                <div track-card ng-repeat="track in lCtrl.list.results"></div>
+
+                <div class="btn">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newTrackModal">Add New Track</button>
+                </div>
+                <div class="pager-container">
+                    <button class="btn btn-sucess btn-xs" ng-click="lCtrl.getByPage(1)">1</button>
+                    <button class="btn btn-sucess btn-xs" ng-click="lCtrl.getByPage(2)">2</button>
+                    <button class="btn btn-sucess btn-xs" ng-click="lCtrl.getByPage(3)">3</button>
+                    <button class="btn btn-sucess btn-xs" ng-click="lCtrl.getByPage('next')">next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="editTrackModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Track</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group" ng-repeat="(prop,val) in lCtrl.editTrackItem">
+                            <label  class="col-sm-2 control-label">{{prop}}</label>
+                            <div class="col-sm-10" ng-if="prop !='genres' ">
+                                <input type="text" class="form-control" ng-if="prop !='id' " ng-model="lCtrl.editTrackItem[prop]"/>
+                                <input type="text" class="form-control" ng-if="prop =='id' " readonly ng-model="lCtrl.editTrackItem[prop]"/>
+                            </div>
+                            <div class="col-sm-10" ng-if="prop=='genres' ">
+                                <select ng-model="lCtrl.editTrackItem[prop]">
+                                    <option ng-repeat="x in lCtrl.genresList.results" value="{{x.id}}">{{x.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default" ng-click="lCtrl.edit(lCtrl.editTrackItem)">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="newTrackModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Track</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" ng-model="lCtrl.newTrack.title"
+                                       placeholder="Add Gener.."/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">Rating</label>
+                            <div class="col-sm-10">
+                                <input type="number" step="0.1" class="form-control" ng-model="lCtrl.newTrack.rating" min="0" max="5"
+                                       placeholder="Add rating.."/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">Gener</label>
+                            <div class="col-sm-10">
+                                <select style="width: 12vw;" ng-model="lCtrl.genreId" multiple>
+                                    <option ng-repeat="x in lCtrl.genresList.results" value="{{x.id}}">{{x.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default" ng-click="lCtrl.addTrack(lCtrl.newTrack)">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

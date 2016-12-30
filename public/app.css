@@ -1,0 +1,90 @@
+body{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.typeahead-demo .custom-popup-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: #f9f9f9;
+}
+
+.typeahead-demo .custom-popup-wrapper > .message {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #868686;
+}
+
+.typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+.overlay-x{
+    position:absolute;
+    top:6px;
+    right:10px;
+    cursor:pointer;
+}
+.overlay-y{
+    position:absolute;
+    top:6px;
+    left:10px;
+    cursor:pointer;
+}
+.overlay-wrapper{
+    position:relative;
+}
+
+.list-container{
+    text-align: center;
+    margin: auto;
+    margin-top: 10vh;
+    width: 40vw;
+}
+.geners-container{
+    text-align: center;
+    margin: auto;
+    margin-top: 10vh;
+    width: 25vw;
+}
+.track-card{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #000000;
+    height: 40px;
+    box-sizing: border-box;
+}
+.search-container{
+    margin-bottom: 50px;
+}
+.add-track-btn{
+    margin-top: 20px;
+    width:20vw;
+    border:1px solid #666666;
+    background-color: #d4d4d4;
+    border-radius: 15px;
+}
+.pager-btn{
+    border:1px solid #c3c3c3;
+    display: inline-block;
+    padding: 5px;
+}
+.pager-container{
+    margin: 30px auto;
+}
+#genersLink{
+    position: absolute;
+    top: 10vh;
+    right: 20px;
+    cursor: pointer;
+}
+.edit-track-btn{
+    float:right;
+}

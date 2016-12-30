@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="container">
+        <div class="geners-container">
+            <h2>Music Geners</h2>
+            <div class="overlay-wrapper">
+                <!--<div class="search-container">-->
+                    <!--<span class="overlay-x" ng-click="GCtrl.searchName=''">X</span>-->
+                    <!--&lt;!&ndash;<span class="overlay-y"><i class="fa fa-search"></i></span>&ndash;&gt;-->
+                    <!--<input type="text" ng-model="GCtrl.searchName" placeholder="&nbsp;&nbsp; Search Gener" uib-typeahead="track for track in GCtrl.getGener($viewValue)"-->
+                           <!--typeahead-loading="loadingTracks" typeahead-no-results="noResults" class="form-control">-->
+                    <!--<a ><button>search</button></a>-->
+                <!--</div>-->
+                <table class="table table-bordered table-striped">
+                    <tr ng-repeat="gener in GCtrl.genersList.results">
+                        <td >
+                            <span style="float:left">{{gener.name}}{{gener.id}}</span>
+                            <span style="float:right">
+                                <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                        data-target="#editModal" ng-click="GCtrl.openEditModal(gener)">Edit</button>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <!--<div class="btn add-track-btn">-->
+                    <!--<h4></h4>-->
+                <!--</div>-->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add New Gener</button>
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Add New Gener</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label"
+                                                for="inputGener">Gener</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" ng-model="GCtrl.newGener"
+                                                   id="inputGener" placeholder="Add Gener.."/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default" ng-click="GCtrl.addGener()">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="editModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Edit Gener</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label"
+                                                for="inputGener">New Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" ng-model="GCtrl.editGener"
+                                                    placeholder="change Gener name .."/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default" ng-click="GCtrl.edit(GCtrl.editGenerItem)">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

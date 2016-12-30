@@ -1,0 +1,19 @@
+{
+  "name": "gready",
+  "description": "resource based http call",
+  "main": "",
+  "authors": [
+    "Sudipta Ranjan Swain <sudismart127@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "dependencies": {
+    "angular-resource": "~1.6.1",
+    "angular": "~1.6.1",
+    "angular-ui-router": "~0.3.2",
+    "angular-bootstrap": "~2.3.2",
+    "bootstrap": "~3.3.7",
+    "font-awesome": "~4.7.0"
+  }
+}
